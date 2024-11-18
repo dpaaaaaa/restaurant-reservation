@@ -17,7 +17,7 @@
             <tr>
                 <td>{{ $menu->nama_menu }}</td>
                 <td>{{ $menu->deskripsi }}</td>
-                <td>{{ $menu->harga }}</td>
+                <td>{{ number_format($menu->harga, 2) }}</td>
                 <td>
                     <a href="{{ route('menu.edit', $menu->id) }}">Edit</a>
                     <form action="{{ route('menu.destroy', $menu->id) }}" method="POST" style="display:inline;">
