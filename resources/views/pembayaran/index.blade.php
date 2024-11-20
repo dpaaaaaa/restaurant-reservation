@@ -30,10 +30,12 @@
                             <a href="{{ route('pembayaran.edit', $pembayaran->id) }}" class="btn btn-outline-warning btn-sm">
                                 <i class="fas fa-edit"></i> Edit
                             </a>
-                            <form action="{{ route('pembayaran.destroy', $pembayaran->id) }}" method="POST" style="display:inline;">
+                            <form action="{{ route('pembayaran.destroy', $pembayaran->id) }}" method="POST"
+                                style="display:inline;">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-outline-danger btn-sm" onclick="return confirm('Hapus pembayaran?')">
+                                <button type="submit" class="btn btn-outline-danger btn-sm"
+                                    onclick="return confirm('Hapus pembayaran?')">
                                     <i class="fas fa-trash-alt"></i> Hapus
                                 </button>
                             </form>
@@ -43,4 +45,5 @@
             </tbody>
         </table>
     </div>
+    >>>>>>> 9687a981b30f6adb075dea5e2fad63482954aeaa
 @endsection
