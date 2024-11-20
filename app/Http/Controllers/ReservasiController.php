@@ -12,11 +12,25 @@ use Illuminate\Http\Request;
 
 class ReservasiController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $reservasis = Reservasi::with(['pelanggan', 'meja'])->get();
+        $query = Reservasi::with(['pelanggan', 'meja']);
+
+        // Tambahkan filter pencarian berdasarkan input pengguna
+        if ($request->has('search') && $request->search) {
+            $search = $request->search;
+            $query->whereHas('pelanggan', function ($q) use ($search) {
+                $q->where('nama', 'like', '%' . $search . '%');
+            })->orWhere('tanggal_reservasi', 'like', '%' . $search . '%')
+              ->orWhere('status', 'like', '%' . $search . '%');
+        }
+
+        $reservasis = $query->get();
+
         return view('reservasi.index', compact('reservasis'));
     }
+
+
 
     public function create()
     {
@@ -27,13 +41,17 @@ class ReservasiController extends Controller
 
     public function store(Request $request)
     {
-        Reservasi::create($request->validate([
+        $meja = Meja::findOrFail($request->meja_id);
+        $input = $request->validate([
             'pelanggan_id' => 'required|exists:pelanggans,id',
             'meja_id' => 'required|exists:mejas,id',
             'tanggal_reservasi' => 'required|date',
-            'jumlah_orang' => 'required|integer|min:1',
+            'jumlah_orang' => 'required|integer|min:1|max:'. $meja->kapasitas,
             'status' => 'required|string'
-        ]));
+        ],[
+            'jumlah_orang.max' => 'orang tidak boleh lebih dari ' . $meja->kapasitas,
+        ]);
+        Reservasi::create($input);
         return redirect()->route('reservasi.index');
     }
 
