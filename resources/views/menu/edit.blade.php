@@ -1,20 +1,34 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Edit Menu</h1>
-    <form action="{{ route('menu.update', $menu->id) }}" method="POST">
-        @csrf
-        @method('PUT')
-        <label for="nama_menu">Nama Menu</label>
-        <input type="text" name="nama_menu" id="nama_menu" value="{{ $menu->nama_menu }}" required>
+    <div class="container mt-4">
+        <h1 class="text-primary mb-4">Edit Menu</h1>
+        <form action="{{ route('menu.update', $menu->id) }}" method="POST" class="bg-light p-4 rounded shadow-sm">
+            @csrf
+            @method('PUT')
 
-        <label for="deskripsi">Deskripsi</label>
-        <textarea name="deskripsi" id="deskripsi">{{ $menu->deskripsi }}</textarea>
-
-        <label for="harga">Harga</label>
-        <input type="number" name="harga" id="harga" value="{{ $menu->harga }}" required step="0.01"
-            min="0">
-
-        <button type="submit">Update</button>
-    </form>
+            <div class="mb-3">
+                <label for="nama_menu" class="form-label">Nama Menu</label>
+                <input type="text" name="nama_menu" id="nama_menu" class="form-control"
+                       value="{{ $menu->nama_menu }}" required>
+            </div>
+            <div class="mb-3">
+                <label for="deskripsi" class="form-label">Deskripsi</label>
+                <textarea name="deskripsi" id="deskripsi" class="form-control" rows="4">{{ $menu->deskripsi }}</textarea>
+            </div>
+            <div class="mb-3">
+                <label for="harga" class="form-label">Harga</label>
+                <input type="number" name="harga" id="harga" class="form-control"
+                       value="{{ $menu->harga }}" required step="0.01" min="0">
+            </div>
+            <div class="d-flex justify-content-between">
+                <a href="{{ route('menu.index') }}" class="btn btn-outline-primary">
+                    <i class="fas fa-arrow-left"></i> Kembali
+                </a>
+                <button type="submit" class="btn btn-outline-success">
+                    <i class="fas fa-save"></i> Update
+                </button>
+            </div>
+        </form>
+    </div>
 @endsection
