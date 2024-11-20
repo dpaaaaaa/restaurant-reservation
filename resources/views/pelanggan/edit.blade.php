@@ -1,19 +1,32 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Edit Pelanggan</h1>
-    <form action="{{ route('pelanggan.update', $pelanggan->id) }}" method="POST">
-        @csrf
-        @method('PUT')
-        <label for="nama">Nama</label>
-        <input type="text" name="nama" id="nama" value="{{ $pelanggan->nama }}" required>
+    <div class="container mt-4">
+        <h1 class="text-primary mb-4">Edit Pelanggan</h1>
+        <form action="{{ route('pelanggan.update', $pelanggan->id) }}" method="POST" class="bg-light p-4 rounded shadow-sm">
+            @csrf
+            @method('PUT')
 
-        <label for="email">Email</label>
-        <input type="email" name="email" id="email" value="{{ $pelanggan->email }}" required>
+            <div class="mb-3">
+                <label for="nama" class="form-label">Nama</label>
+                <input type="text" name="nama" id="nama" class="form-control" value="{{ $pelanggan->nama }}" required></div>
 
-        <label for="telepon">Telepon</label>
-        <input type="text" name="telepon" id="telepon" value="{{ $pelanggan->telepon }}" required>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="text" name="email" id="email" class="form-control"value="{{ $pelanggan->email }}" required></div>
 
-        <button type="submit">Update</button>
-    </form>
+            <div class="mb-3">
+                <label for="telepon" class="form-label">Telepon</label>
+                <input type="number" name="telepon" id="telepon" class="form-control"value="{{ $pelanggan->telepon }}" required></div>
+
+            <div class="d-flex justify-content-between">
+                <a href="{{ route('pelanggan.index') }}" class="btn btn-outline-primary">
+                <i class="fas fa-arrow-left"></i> Kembali
+                </a>
+                <button type="submit" class="btn btn-outline-success">
+                <i class="fas fa-save"></i> Update
+                </button>
+            </div>
+        </form>
+    </div>
 @endsection
