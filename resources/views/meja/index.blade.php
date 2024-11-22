@@ -6,6 +6,13 @@
         <a href="{{ route('meja.create') }}" class="btn btn-primary">Tambah Meja</a>
     </div>
 
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+
+
     <table class="table table-bordered">
         <tr>
             <th>Nomor Meja</th>

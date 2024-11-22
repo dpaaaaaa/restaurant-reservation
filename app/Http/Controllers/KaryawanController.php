@@ -28,8 +28,12 @@ class KaryawanController extends Controller
             'gaji' => 'required|numeric|min:0',
         ]));
 
-        return redirect()->route('karyawan.index');
+
+
+        return redirect()->route('karyaw t64a.index')->with('success', 'Meja added successfully');
+
     }
+
 
     public function edit($id)
     {

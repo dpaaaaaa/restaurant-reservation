@@ -9,6 +9,12 @@
                 <i class="fas fa-plus"></i> Tambah Karyawan
             </a>
         </div>
+        @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+
 
         <!-- Table -->
         <div class="table-responsive">
@@ -30,10 +36,14 @@
                             <td>{{ $karyawan->jabatan }}</td>
                             <td>Rp {{ number_format($karyawan->gaji, 2, ',', '.') }}</td>
                             <td class="text-center">
-                                <a href="{{ route('karyawan.edit', $karyawan->id) }}" class="btn btn-outline-success btn-sm">
+
+
+                                <a href="{{ route('karyawan.edit', $karyawan->id) }}"
+                                    class="btn btn-outline-success btn-sm">
                                     <i class="fas fa-edit"></i> Edit
                                 </a>
-                                <form action="{{ route('karyawan.destroy', $karyawan->id) }}" method="POST" class="d-inline">
+                                <form action="{{ route('karyawan.destroy', $karyawan->id) }}" method="POST"
+                                    class="d-inline">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-outline-danger btn-sm"

@@ -20,8 +20,8 @@
         </form>
 
         <!-- Table -->
-        <table class="table table-striped table-bordered">
-            <thead class="thead-dark">
+        <table class="table table-striped table-hover table-bordered">
+            <thead class="table-dark">
                 <tr>
                     <th>Pelanggan</th>
                     <th>Meja</th>
