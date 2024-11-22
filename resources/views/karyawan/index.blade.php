@@ -4,7 +4,7 @@
     <div class="container mt-4">
         <!-- Header -->
         <div class="d-flex justify-content-between align-items-center mb-4">
-            <h1 class="text-primary">Daftar Karyawan</h1>
+            <h1 class="text-dark">Daftar Karyawan</h1>
             <a href="{{ route('karyawan.create') }}" class="btn btn-success">
                 <i class="fas fa-plus"></i> Tambah Karyawan
             </a>
@@ -30,10 +30,12 @@
                             <td>{{ $karyawan->jabatan }}</td>
                             <td>Rp {{ number_format($karyawan->gaji, 2, ',', '.') }}</td>
                             <td class="text-center">
-                                <a href="{{ route('karyawan.edit', $karyawan->id) }}" class="btn btn-outline-success btn-sm">
+                                <a href="{{ route('karyawan.edit', $karyawan->id) }}"
+                                    class="btn btn-outline-success btn-sm">
                                     <i class="fas fa-edit"></i> Edit
                                 </a>
-                                <form action="{{ route('karyawan.destroy', $karyawan->id) }}" method="POST" class="d-inline">
+                                <form action="{{ route('karyawan.destroy', $karyawan->id) }}" method="POST"
+                                    class="d-inline">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-outline-danger btn-sm"
