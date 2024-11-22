@@ -2,20 +2,20 @@
 
 @section('content')
     <div class="container mt-4">
-        <h1 class="text-primary mb-4">Edit Meja</h1>
+        <h1 class="text-dark mb-4">Edit Meja</h1>
         <form action="{{ route('meja.update', $meja->id) }}" method="POST" class="bg-light p-4 rounded shadow-sm">
             @csrf
             @method('PUT')
 
             <div class="mb-3">
                 <label for="nomor_meja" class="form-label">Nomor Meja</label>
-                <input type="text" name="nomor_meja" id="nomor_meja" class="form-control"
-                       value="{{ $meja->nomor_meja }}" required>
+                <input type="text" name="nomor_meja" id="nomor_meja" class="form-control" value="{{ $meja->nomor_meja }}"
+                    required>
             </div>
             <div class="mb-3">
                 <label for="kapasitas" class="form-label">Kapasitas</label>
-                <input type="text" name="kapasitas" id="kapasitas" class="form-control"
-                       value="{{ $meja->kapasitas }}" required>
+                <input type="text" name="kapasitas" id="kapasitas" class="form-control" value="{{ $meja->kapasitas }}"
+                    required>
             </div>
             <div class="mb-3">
                 <label for="status" class="form-label">Status</label>

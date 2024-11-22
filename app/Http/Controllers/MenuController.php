@@ -1,11 +1,10 @@
 <?php
 
-// app/Http/Controllers/MenuController.php
-
 namespace App\Http\Controllers;
 
 use App\Models\Menu;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class MenuController extends Controller
 {
@@ -22,12 +21,25 @@ class MenuController extends Controller
 
     public function store(Request $request)
     {
-        Menu::create($request->validate([
+        $validated = $request->validate([
             'nama_menu' => 'required|string|max:255',
             'deskripsi' => 'nullable|string',
-            'harga' => 'required|numeric|min:0'
-        ]));
-        return redirect()->route('menu.index');
+            'harga' => 'required|numeric|min:0',
+            'image' => 'nullable|file|mimes:jpg,jpeg,png|max:2048' // Validasi file gambar
+        ]);
+
+        try {
+            // Proses upload gambar jika ada
+            if ($request->hasFile('image')) {
+                $file = $request->file('image');
+                $validated['image'] = $file->storeAs('uploads/menus', time() . '_' . $file->getClientOriginalName(), 'public');
+            }
+
+            Menu::create($validated);
+            return redirect()->route('menu.index')->with('success', 'Menu berhasil ditambahkan.');
+        } catch (\Exception $e) {
+            return back()->withErrors(['error' => 'Terjadi kesalahan saat menyimpan menu: ' . $e->getMessage()]);
+        }
     }
 
     public function edit($id)
@@ -39,18 +51,47 @@ class MenuController extends Controller
     public function update(Request $request, $id)
     {
         $menu = Menu::findOrFail($id);
-        $menu->update($request->validate([
+
+        $validated = $request->validate([
             'nama_menu' => 'required|string|max:255',
             'deskripsi' => 'nullable|string',
-            'harga' => 'required|numeric|min:0'
-        ]));
-        return redirect()->route('menu.index');
+            'harga' => 'required|numeric|min:0',
+            'image' => 'nullable|file|mimes:jpg,jpeg,png|max:2048' // Validasi file gambar
+        ]);
+
+        try {
+            // Proses upload gambar jika ada
+            if ($request->hasFile('image')) {
+                // Hapus file lama jika ada
+                if ($menu->image && Storage::exists('public/' . $menu->image)) {
+                    Storage::delete('public/' . $menu->image);
+                }
+
+                $file = $request->file('image');
+                $validated['image'] = $file->storeAs('uploads/menus', time() . '_' . $file->getClientOriginalName(), 'public');
+            }
+
+            $menu->update($validated);
+            return redirect()->route('menu.index')->with('success', 'Menu berhasil diperbarui.');
+        } catch (\Exception $e) {
+            return back()->withErrors(['error' => 'Terjadi kesalahan saat memperbarui menu: ' . $e->getMessage()]);
+        }
     }
 
     public function destroy($id)
     {
         $menu = Menu::findOrFail($id);
-        $menu->delete();
-        return redirect()->route('menu.index');
+
+        try {
+            // Hapus file gambar jika ada
+            if ($menu->image && Storage::exists('public/' . $menu->image)) {
+                Storage::delete('public/' . $menu->image);
+            }
+
+            $menu->delete();
+            return redirect()->route('menu.index')->with('success', 'Menu berhasil dihapus.');
+        } catch (\Exception $e) {
+            return back()->withErrors(['error' => 'Terjadi kesalahan saat menghapus menu: ' . $e->getMessage()]);
+        }
     }
 }
