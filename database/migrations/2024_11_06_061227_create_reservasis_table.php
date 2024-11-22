@@ -23,8 +23,6 @@ public function up()
         $table->timestamps();
     });
 }
-
-
     /**
      * Reverse the migrations.
      */

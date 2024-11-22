@@ -25,7 +25,7 @@ class MejaController extends Controller
             'kapasitas' => 'required|integer',
             'status' => 'required|boolean'
         ]));
-        return redirect()->route('meja.index');
+        return redirect()->route('meja.index')->with('success', 'Meja added successfully');
     }
 
     public function edit($id)

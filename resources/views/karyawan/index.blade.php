@@ -9,6 +9,12 @@
                 <i class="fas fa-plus"></i> Tambah Karyawan
             </a>
         </div>
+        @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+
 
         <!-- Table -->
         <div class="table-responsive">

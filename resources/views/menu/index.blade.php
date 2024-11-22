@@ -2,7 +2,6 @@
 
 @section('content')
     <div class="container mt-4">
-        <!-- Title and Button -->
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h1 class="text-dark">Daftar Menu</h1>
             <a href="{{ route('menu.create') }}" class="btn btn-success">Tambah Menu</a>
