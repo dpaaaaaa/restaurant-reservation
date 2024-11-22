@@ -19,18 +19,18 @@
             </div>
             <div class="mb-3">
                 <label for="total_bayar" class="form-label">Total Bayar</label>
-                <input type="number" name="total_bayar" id="total_bayar"
-                       class="form-control" value="{{ $pembayaran->total_bayar }}" required>
+                <input type="number" name="total_bayar" id="total_bayar" class="form-control"
+                    value="{{ $pembayaran->total_bayar }}" required>
             </div>
             <div class="mb-3">
                 <label for="tanggal_bayar" class="form-label">Tanggal Bayar</label>
-                <input type="date" name="tanggal_bayar" id="tanggal_bayar"
-                       class="form-control" value="{{ $pembayaran->tanggal_bayar }}" required>
+                <input type="date" name="tanggal_bayar" id="tanggal_bayar" class="form-control"
+                    value="{{ $pembayaran->tanggal_bayar }}" required>
             </div>
             <div class="mb-3">
                 <label for="metode_pembayaran" class="form-label">Metode Pembayaran</label>
-                <input type="text" name="metode_pembayaran" id="metode_pembayaran"
-                       class="form-control" value="{{ $pembayaran->metode_pembayaran }}" required>
+                <input type="text" name="metode_pembayaran" id="metode_pembayaran" class="form-control"
+                    value="{{ $pembayaran->metode_pembayaran }}" required>
             </div>
             <div class="d-flex justify-content-between">
                 <a href="{{ route('pembayaran.index') }}" class="btn btn-outline-primary">

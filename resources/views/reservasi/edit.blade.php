@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container mt-4">
-        <h1 class="text-primary mb-4">Edit Reservasi</h1>
+        <h1 class="text-dark mb-4">Edit Reservasi</h1>
         <form action="{{ route('reservasi.update', $reservasi->id) }}" method="POST" class="bg-light p-4 rounded shadow-sm">
             @csrf
             @method('PUT')
@@ -10,7 +10,8 @@
                 <label for="pelanggan_id" class="form-label">Pelanggan</label>
                 <select name="pelanggan_id" id="pelanggan_id" class="form-select" required>
                     @foreach ($pelanggans as $pelanggan)
-                        <option value="{{ $pelanggan->id }}" {{ $reservasi->pelanggan_id == $pelanggan->id ? 'selected' : '' }}>
+                        <option value="{{ $pelanggan->id }}"
+                            {{ $reservasi->pelanggan_id == $pelanggan->id ? 'selected' : '' }}>
                             {{ $pelanggan->nama }}
                         </option>
                     @endforeach
@@ -28,13 +29,13 @@
             </div>
             <div class="mb-3">
                 <label for="tanggal_reservasi" class="form-label">Tanggal Reservasi</label>
-                <input type="datetime-local" name="tanggal_reservasi" id="tanggal_reservasi"
-                       class="form-control" value="{{ $reservasi->tanggal_reservasi }}" required>
+                <input type="datetime-local" name="tanggal_reservasi" id="tanggal_reservasi" class="form-control"
+                    value="{{ $reservasi->tanggal_reservasi }}" required>
             </div>
             <div class="mb-3">
                 <label for="jumlah_orang" class="form-label">Jumlah Orang</label>
-                <input type="number" name="jumlah_orang" id="jumlah_orang"
-                       class="form-control" value="{{ $reservasi->jumlah_orang }}" required>
+                <input type="number" name="jumlah_orang" id="jumlah_orang" class="form-control"
+                    value="{{ $reservasi->jumlah_orang }}" required>
             </div>
             <div class="mb-3">
                 <label for="status" class="form-label">Status</label>

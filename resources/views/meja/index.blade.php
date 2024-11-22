@@ -1,10 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="d-flex justify-content-between align-items-center mb-3">
-        <h1>Daftar Meja</h1>
-        <a href="{{ route('meja.create') }}" class="btn btn-primary">Tambah Meja</a>
-    </div>
+    <div class="container mt-4">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1 class="text-dark">Daftar Meja</h1>
+            <a href="{{ route('meja.create') }}" class="btn btn-success"><i class="fas fa-plus"></i>Tambah Meja</a>
+        </div>
 
     @if (session('success'))
         <div class="alert alert-success">
