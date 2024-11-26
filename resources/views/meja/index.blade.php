@@ -20,6 +20,7 @@
             @endif
         </div>
 
+<<<<<<< HEAD
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -75,4 +76,36 @@
     </div>
 </div>
 <!-- /.container-fluid -->
+=======
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+
+
+    <table class="table table-bordered">
+        <tr>
+            <th>Nomor Meja</th>
+            <th>Kapasitas</th>
+            <th>Status</th>
+            <th>Aksi</th>
+        </tr>
+        @foreach ($mejas as $meja)
+            <tr>
+                <td>{{ $meja->nomor_meja }}</td>
+                <td>{{ $meja->kapasitas }}</td>
+                <td>{{ $meja->status ? 'Tersedia' : 'Terisi' }}</td>
+                <td>
+                    <a href="{{ route('meja.edit', $meja->id) }}">Edit</a>
+                    <form action="{{ route('meja.destroy', $meja->id) }}" method="POST" style="display:inline;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" onclick="return confirm('Hapus meja?')">Hapus</button>
+                    </form>
+                </td>
+            </tr>
+        @endforeach
+    </table>
+>>>>>>> 393cff3bf5cd711452f736ae1580d0a3a2ea80d3
 @endsection

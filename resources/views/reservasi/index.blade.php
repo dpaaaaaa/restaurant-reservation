@@ -33,32 +33,38 @@
                 </div>
             </form>
 
-            <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Pelanggan</th>
-                            <th>Meja</th>
-                            <th>Tanggal</th>
-                            <th>Jumlah Orang</th>
-                            <th>Status</th>
-                            <th>Opsi</th>
-                        </tr>
-                    </thead>
-                    <tfoot>
-                        <tr>
-                            <th>#</th>
-                            <th>Pelanggan</th>
-                            <th>Meja</th>
-                            <th>Tanggal</th>
-                            <th>Jumlah Orang</th>
-                            <th>Status</th>
-                            <th>Opsi</th>
-                        </tr>
-                    </tfoot>
-                    <tbody>
-                        @foreach ($reservasis as $reservasi)
+        <!-- Table -->
+<<<<<<<<< Temporary merge branch 1
+        <div class="table-responsive">
+            <table class="table table-striped table-hover table-bordered">
+                <thead class="table-dark">
+=========
+        <table class="table table-striped table-hover table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>Pelanggan</th>
+                    <th>Meja</th>
+                    <th>Tanggal</th>
+                    <th>Jumlah Orang</th>
+                    <th>Status</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($reservasis as $reservasi)
+>>>>>>>>> Temporary merge branch 2
+                    <tr>
+                        <th>ID</th>
+                        <th>Pelanggan</th>
+                        <th>Meja</th>
+                        <th>Tanggal</th>
+                        <th>Jumlah Orang</th>
+                        <th>Status</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($reservasis as $reservasi)
                         <tr>
                             <th scope="row">{{ $loop->iteration }}</th>
                             <td><strong>{{ $reservasi->pelanggan->nama }}</strong></td>

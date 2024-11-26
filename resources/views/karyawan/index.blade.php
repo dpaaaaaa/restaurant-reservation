@@ -26,6 +26,7 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
+<<<<<<< HEAD
                             <th>#</th>
                             <th>Nama</th>
                             <th>Jabatan</th>
@@ -53,6 +54,16 @@
                                 <a href="{{ route('karyawan.edit', $karyawan->id) }}" class="btn btn-outline-success btn-sm">
                                     <img width="16" height="16" src="https://img.icons8.com/fluency-systems-regular/50/40C057/edit-user-female.png" alt="edit-user-female"/>
                                     <i class="fas fa-user-edit"></i> Edit
+=======
+                            <td>{{ $karyawan->id }}</td>
+                            <td>{{ $karyawan->nama }}</td>
+                            <td>{{ $karyawan->jabatan }}</td>
+                            <td>Rp {{ number_format($karyawan->gaji, 2, ',', '.') }}</td>
+                            <td class="text-center">
+                                <a href="{{ route('karyawan.edit', $karyawan->id) }}"
+                                    class="btn btn-outline-success btn-sm">
+                                    <i class="fas fa-edit"></i> Edit
+>>>>>>> 393cff3bf5cd711452f736ae1580d0a3a2ea80d3
                                 </a>
                                 <form action="{{ route('karyawan.destroy', $karyawan->id) }}" method="POST" class="d-inline">
                                     @csrf
