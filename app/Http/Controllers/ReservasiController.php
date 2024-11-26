@@ -52,7 +52,7 @@ class ReservasiController extends Controller
             'jumlah_orang.max' => 'orang tidak boleh lebih dari ' . $meja->kapasitas,
         ]);
         Reservasi::create($input);
-        return redirect()->route('reservasi.index');
+        return redirect()->route('reservasi.index')->with('succes' , 'Reservasi added succesfuly');
     }
 
     public function edit($id)

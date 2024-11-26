@@ -26,7 +26,9 @@ class MenuController extends Controller
             'deskripsi' => 'nullable|string',
             'harga' => 'required|numeric|min:0',
             'image' => 'nullable|file|mimes:jpg,jpeg,png|max:2048' // Validasi file gambar
-        ]);
+        ],
+        ['nama_menu.required' => 'Harus diisi'],
+    );
 
         try {
             // Proses upload gambar jika ada
@@ -36,7 +38,7 @@ class MenuController extends Controller
             }
 
             Menu::create($validated);
-            return redirect()->route('menu.index')->with('success', 'Menu berhasil ditambahkan.');
+            return redirect()->route('menu.index')->with('success', 'Menu adeded succesfully.');
         } catch (\Exception $e) {
             return back()->withErrors(['error' => 'Terjadi kesalahan saat menyimpan menu: ' . $e->getMessage()]);
         }

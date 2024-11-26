@@ -26,7 +26,7 @@ class PelangganController extends Controller
             'email' => 'required|email|unique:pelanggans,email',
             'telepon' => 'required|string|max:15',
         ]));
-        return redirect()->route('pelanggan.index');
+        return redirect()->route('pelanggan.index')->with('succes', 'pelanggan added succesfully');
     }
 
     public function edit($id)

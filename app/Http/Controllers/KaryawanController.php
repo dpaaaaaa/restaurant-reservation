@@ -30,7 +30,7 @@ class KaryawanController extends Controller
 
 
 
-        return redirect()->route('karyaw t64a.index')->with('success', 'Meja added successfully');
+        return redirect()->route('karyawan.index')->with('success', 'Karyawan added successfully');
 
     }
 

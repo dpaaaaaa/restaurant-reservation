@@ -36,7 +36,7 @@ class PesananController extends Controller
             'total_harga' => $total_harga
         ]);
 
-        return redirect()->route('pesanan.index');
+        return redirect()->route('pesanan.index')->with('succes' , 'Pesanan added succesfully');
     }
 
     public function edit($id)
