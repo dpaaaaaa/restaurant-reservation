@@ -30,7 +30,9 @@
                 @enderror
             </div>
 
-            <button type="submit" class="btn btn-outline-success">Simpan</button>
+            <button type="submit" class="btn btn-outline-success">
+                <img width="20" height="20" src="https://img.icons8.com/ios-glyphs/30/40C057/save--v1.png" alt="save--v1"/>
+                Simpan</button>
         </form>
     </div>
 @endsection

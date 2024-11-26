@@ -30,8 +30,8 @@ class PembayaranController extends Controller
             'tanggal_bayar' => 'required|date',
             'metode_pembayaran' => 'required|string|max:255',
         ]));
-        
-        return redirect()->route('pembayaran.index');
+
+        return redirect()->route('pembayaran.index')->with('succes', 'pembayaran added succesfully');
     }
 
     public function edit($id)
@@ -44,7 +44,7 @@ class PembayaranController extends Controller
     public function update(Request $request, $id)
     {
         $pembayaran = Pembayaran::findOrFail($id);
-        
+
         $pembayaran->update($request->validate([
             'pesanan_id' => 'required|exists:pesanans,id',
             'total_bayar' => 'required|numeric|min:0',
