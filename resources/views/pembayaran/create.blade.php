@@ -8,18 +8,21 @@
                 <label for="pesanan_id" class="form-label">Pesanan</label>
                 <select name="pesanan_id" id="pesanan_id" class="form-control" required>
                     @foreach ($pesanans as $pesanan)
-                        <option value="{{ $pesanan->id }}"> {{ $pesanan->pelanggan->nama }} - Rp. {{ $pesanan->total_harga}}</option>
+                        <option value="{{ $pesanan->id }}">
+                            {{ $pesanan->pelanggan->nama }} - Rp. {{ number_format($pesanan->total_harga, 0, ',', '.') }}
+                        </option>
                     @endforeach
                 </select>
+
 
                 <div class="mb-3">
                     <label for="total_bayar" class="form-label">Total Bayar</label>
                     <input type="number" name="total_bayar" id="total_bayar" class="form-control" required>
 
-                @error('total_bayar')
-                <div class="text-danger">{{$message}}</div>
-                <input type="number" name="total_bayar" id="total_bayar" class="form-control" required>
-                @enderror
+                    @error('total_bayar')
+                        <div class="text-danger">{{ $message }}</div>
+                        <input type="number" name="total_bayar" id="total_bayar" class="form-control" required>
+                    @enderror
                 </div>
 
 
@@ -32,13 +35,18 @@
                     <label for="metode_pembayaran" class="form-label">Metode Pembayaran</label>
                     <input type="text" name="metode_pembayaran" id="metode_pembayaran" class="form-control" required>
                     @error('metode_pembayaran')
-                    <div class="text-danger">{{$message}}
-                    @enderror
+                        <div class="text-danger">{{ $message }}
+                        @enderror
 
-                </div>
+                    </div>
 
-                <button type="submit" class="btn btn-outline-success">
-                    <img width="20" height="20" src="https://img.icons8.com/ios-glyphs/30/40C057/save--v1.png" alt="save--v1"/>
-                    Simpan</button>
+                    <div class="d-flex justify-content-between">
+                        <a href="{{ route('pembayaran.index') }}" class="btn btn-outline-primary">
+                            <i class="fas fa-arrow-left"></i> Kembali
+                        </a>
+                        <button type="submit" class="btn btn-outline-success">
+                            <i class="fas fa-save"></i> Update
+                        </button>
+                    </div>
             </form>
         @endsection

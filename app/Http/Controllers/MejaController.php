@@ -25,7 +25,7 @@ class MejaController extends Controller
             'kapasitas' => 'required|integer',
             'status' => 'required|boolean'
         ]));
-        return redirect()->route('meja.index')->with('success', 'Meja added successfully');
+        return redirect()->route('meja.index')->with('success', 'Meja berhasil ditambah');
     }
 
     public function edit($id)
@@ -44,13 +44,13 @@ class MejaController extends Controller
             'kapasitas' => 'required|integer',
             'status' => 'required|boolean'
         ]));
-        return redirect()->route('meja.index')->with('success', 'Meja updated successfully');
+        return redirect()->route('meja.index')->with('success', 'Meja berhasil diupdate');
     }
 
     public function destroy($id)
     {
         $meja = Meja::findOrFail($id);
         $meja->delete();
-        return redirect()->route('meja.index')->with('success', 'Meja deleted successfully');
+        return redirect()->route('meja.index')->with('success', 'Meja dberhasil dihapus');
     }
 }

@@ -52,7 +52,7 @@ class ReservasiController extends Controller
             'jumlah_orang.max' => 'orang tidak boleh lebih dari ' . $meja->kapasitas,
         ]);
         Reservasi::create($input);
-        return redirect()->route('reservasi.index')->with('succes' , 'Reservasi added succesfuly');
+        return redirect()->route('reservasi.index')->with('succes' , 'Reservasi berhasil ditambah');
     }
 
     public function edit($id)
@@ -74,13 +74,13 @@ class ReservasiController extends Controller
             'jumlah_orang' => 'required|integer|min:1',
             'status' => 'required|string'
         ]));
-        return redirect()->route('reservasi.index');
+        return redirect()->route('reservasi.index')->with('success', 'Reservasi berhasil diupdate');
     }
 
     public function destroy($id)
     {
         $reservasi = Reservasi::findOrFail($id);
         $reservasi->delete();
-        return redirect()->route('reservasi.index');
+        return redirect()->route('reservasi.index')->with('success', 'Reservasi berhasil dihapus');
     }
 }

@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -21,6 +22,7 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
 </head>
+
 <body id="page-top">
 
     <!-- Page Wrapper -->
@@ -30,11 +32,12 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <img width="50" height="50" src="https://img.icons8.com/wired/50/FFFFFF/restaurant.png" alt="restaurant"/>
+                <img width="50" height="50" src="https://img.icons8.com/wired/50/FFFFFF/restaurant.png"
+                    alt="restaurant" />
                 <div class="sidebar-brand-text mx-3">Restauran</div>
             </a>
 
@@ -44,43 +47,53 @@
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
                 <a class="nav-link" href="{{ route('karyawan.index') }}">
-                    <img width="40" height="40" src="https://img.icons8.com/ios-filled/50/FFFFFF/men-age-group-5.png" alt="men-age-group-5"/>
+                    <img width="40" height="40"
+                        src="https://img.icons8.com/ios-filled/50/FFFFFF/men-age-group-5.png" alt="men-age-group-5" />
                     <span>Karyawan</span>
                 </a>
             </li>
             <li class="nav-item active">
                 <a class="nav-link" href="{{ route('pelanggan.index') }}">
-                    <img width="40" height="40" src="https://img.icons8.com/glyph-neue/64/FFFFFF/gender-neutral-user.png" alt="gender-neutral-user"/>
+                    <img width="40" height="40"
+                        src="https://img.icons8.com/glyph-neue/64/FFFFFF/gender-neutral-user.png"
+                        alt="gender-neutral-user" />
                     <span>Pelanggan</span>
                 </a>
             </li>
             <li class="nav-item active">
                 <a class="nav-link" href="{{ route('menu.index') }}">
-                    <img width="40" height="40" src="https://img.icons8.com/ios/50/FFFFFF/restaurant-menu.png" alt="restaurant-menu"/>
-                        <span>Menu</span>
+                    <img width="40" height="40" src="https://img.icons8.com/ios/50/FFFFFF/restaurant-menu.png"
+                        alt="restaurant-menu" />
+                    <span>Menu</span>
                 </a>
             </li>
             <li class="nav-item active">
                 <a class="nav-link" href="{{ route('pesanan.index') }}">
-                    <img width="40" height="40" src="https://img.icons8.com/external-nawicon-detailed-outline-nawicon/50/FFFFFF/external-order-food-food-delivery-nawicon-detailed-outline-nawicon-2.png" alt="external-order-food-food-delivery-nawicon-detailed-outline-nawicon-2"/>
-                     <span>Pesanan</span>
+                    <img width="40" height="40"
+                        src="https://img.icons8.com/external-nawicon-detailed-outline-nawicon/50/FFFFFF/external-order-food-food-delivery-nawicon-detailed-outline-nawicon-2.png"
+                        alt="external-order-food-food-delivery-nawicon-detailed-outline-nawicon-2" />
+                    <span>Pesanan</span>
                 </a>
             </li>
             <li class="nav-item active">
                 <a class="nav-link" href="{{ route('meja.index') }}">
-                    <img width="40" height="40" src="https://img.icons8.com/ios/50/FFFFFF/restaurant-table.png" alt="restaurant-table"/>
-                     <span>Meja</span>
+                    <img width="40" height="40" src="https://img.icons8.com/ios/50/FFFFFF/restaurant-table.png"
+                        alt="restaurant-table" />
+                    <span>Meja</span>
                 </a>
             </li>
             <li class="nav-item active">
                 <a class="nav-link" href="{{ route('pembayaran.index') }}">
-                    <img width="40" height="40" src="https://img.icons8.com/ios/50/FFFFFF/card-in-use.png" alt="card-in-use"/>
+                    <img width="40" height="40" src="https://img.icons8.com/ios/50/FFFFFF/card-in-use.png"
+                        alt="card-in-use" />
                     <span>Pembayaran</span>
                 </a>
             </li>
             <li class="nav-item active">
                 <a class="nav-link" href="{{ route('reservasi.index') }}">
-                    <img width="40" height="40" src="https://img.icons8.com/external-flatart-icons-outline-flatarticons/64/FFFFFF/external-reservation-food-flatart-icons-outline-flatarticons.png" alt="external-reservation-food-flatart-icons-outline-flatarticons"/>
+                    <img width="40" height="40"
+                        src="https://img.icons8.com/external-flatart-icons-outline-flatarticons/64/FFFFFF/external-reservation-food-flatart-icons-outline-flatarticons.png"
+                        alt="external-reservation-food-flatart-icons-outline-flatarticons" />
                     <span>Reservasi</span>
                 </a>
             </li>
@@ -104,35 +117,40 @@
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow mr-4">
-                               <!-- Right Side Of Navbar -->
+                            <!-- Right Side Of Navbar -->
                             <ul class="navbar-nav ms-auto">
                                 <!-- Authentication Links -->
                                 @guest
                                     @if (Route::has('login'))
                                         <li class="nav-item">
-                                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                            <a class="nav-link text-black"
+                                                href="{{ route('login') }}">{{ __('Login') }}</a>
                                         </li>
                                     @endif
 
                                     @if (Route::has('register'))
                                         <li class="nav-item">
-                                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                            <a class="nav-link text-black"
+                                                href="{{ route('register') }}">{{ __('Register') }}</a>
                                         </li>
                                     @endif
                                 @else
                                     <li class="nav-item dropdown">
-                                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        <a id="navbarDropdown" class="nav-link dropdown-toggle text-black" href="#"
+                                            role="button" data-bs-toggle="dropdown" aria-haspopup="true"
+                                            aria-expanded="false" v-pre>
                                             {{ Auth::user()->name }}
                                         </a>
 
                                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                             <a class="dropdown-item" href="{{ route('logout') }}"
-                                               onclick="event.preventDefault();
+                                                onclick="event.preventDefault();
                                                              document.getElementById('logout-form').submit();">
                                                 {{ __('Logout') }}
                                             </a>
 
-                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                                class="d-none">
                                                 @csrf
                                             </form>
                                         </div>
@@ -179,17 +197,18 @@
     <script src="{{ asset('asset/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="{{ asset ('asset/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+    <script src="{{ asset('asset/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
 
     <!-- Custom scripts for all pages-->
     <script src="{{ asset('asset/js/sb-admin-2.min.js') }}"></script>
 
     <!-- Page level plugins -->
-    <script src="{{asset('asset/vendor/chart.js/Chart.min.js')}}"></script>
+    <script src="{{ asset('asset/vendor/chart.js/Chart.min.js') }}"></script>
 
     <!-- Page level custom scripts -->
-    <script src="{{asset('asset/js/demo/chart-area-demo.js')}}"></script>
-    <script src="{{asset('asset/js/demo/chart-pie-demo.js')}}"></script>
+    <script src="{{ asset('asset/js/demo/chart-area-demo.js') }}"></script>
+    <script src="{{ asset('asset/js/demo/chart-pie-demo.js') }}"></script>
 
 </body>
+
 </html>

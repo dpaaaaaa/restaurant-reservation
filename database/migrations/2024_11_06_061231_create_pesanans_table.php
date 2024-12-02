@@ -15,7 +15,7 @@ public function up()
 {
     Schema::create('pesanans', function (Blueprint $table) {
         $table->id();
-        $table->foreignId('pelanggan_id')->constrained()->onDelete('cascade');
+        $table->foreignId('pelanggan_id')->constrained()->onDelete('restrict');
         $table->foreignId('menu_id')->constrained()->onDelete('cascade');
         $table->integer('jumlah');
         $table->decimal('total_harga', 10, 2);

@@ -30,9 +30,14 @@
                 @enderror
             </div>
 
-            <button type="submit" class="btn btn-outline-success">
-                <img width="20" height="20" src="https://img.icons8.com/ios-glyphs/30/40C057/save--v1.png" alt="save--v1"/>
-                Simpan</button>
+            <div class="d-flex justify-content-between">
+                <a href="{{ route('karyawan.index') }}" class="btn btn-outline-primary">
+                    <i class="fas fa-arrow-left"></i> Kembali
+                </a>
+                <button type="submit" class="btn btn-outline-success">
+                    <i class="fas fa-save"></i> Update
+                </button>
+            </div>
         </form>
     </div>
 @endsection

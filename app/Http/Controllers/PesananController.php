@@ -12,10 +12,17 @@ use Illuminate\Http\Request;
 class PesananController extends Controller
 {
     public function index()
-    {
-        $pesanans = Pesanan::with(['pelanggan', 'menu'])->get();
-        return view('pesanan.index', compact('pesanans'));
+{
+    $pesanans = Pesanan::with(['pelanggan', 'menu', 'pembayaran'])->get();
+
+    // Tambahkan atribut dinamis 'status_bayar' ke setiap pesanan
+    foreach ($pesanans as $pesanan) {
+        $pesanan->status_bayar = $pesanan->pembayaran ? 'Sudah Bayar' : 'Belum Bayar';
     }
+
+    return view('pesanan.index', compact('pesanans'));
+}
+
 
     public function create()
     {
@@ -36,7 +43,7 @@ class PesananController extends Controller
             'total_harga' => $total_harga
         ]);
 
-        return redirect()->route('pesanan.index')->with('succes' , 'Pesanan added succesfully');
+        return redirect()->route('pesanan.index')->with('succes' , 'Pesanan berhasil ditambah');
     }
 
     public function edit($id)
@@ -60,13 +67,13 @@ class PesananController extends Controller
             'total_harga' => $total_harga
         ]);
 
-        return redirect()->route('pesanan.index');
+        return redirect()->route('pesanan.index')->with('succes', 'Pesananberhasil diupdate');
     }
 
     public function destroy($id)
     {
         $pesanan = Pesanan::findOrFail($id);
         $pesanan->delete();
-        return redirect()->route('pesanan.index');
+        return redirect()->route('pesanan.index')->with('succes', 'Pesanan berhasil dihapus');
     }
 }

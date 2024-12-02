@@ -9,7 +9,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pesanan extends Model
 {
-    use HasFactory;
+use HasFactory;
+
+
+
 
     protected $fillable = ['pelanggan_id', 'menu_id', 'jumlah', 'total_harga'];
 
@@ -22,5 +25,11 @@ class Pesanan extends Model
     {
         return $this->belongsTo(Menu::class);
     }
+
+    public function pembayaran()
+{
+    return $this->hasOne(Pembayaran::class, 'pesanan_id');
+}
+
 }
 
