@@ -30,7 +30,14 @@
                 @enderror
             </div>
 
-            <button type="submit" class="btn btn-outline-success">Simpan</button>
+            <div class="d-flex justify-content-between">
+                <a href="{{ route('karyawan.index') }}" class="btn btn-outline-primary">
+                    <i class="fas fa-arrow-left"></i> Kembali
+                </a>
+                <button type="submit" class="btn btn-outline-success">
+                    <i class="fas fa-save"></i> Update
+                </button>
+            </div>
         </form>
     </div>
 @endsection

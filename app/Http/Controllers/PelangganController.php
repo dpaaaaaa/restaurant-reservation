@@ -26,7 +26,7 @@ class PelangganController extends Controller
             'email' => 'required|email|unique:pelanggans,email',
             'telepon' => 'required|string|max:15',
         ]));
-        return redirect()->route('pelanggan.index');
+        return redirect()->route('pelanggan.index')->with('succes', 'pelanggan berhasil ditambah');
     }
 
     public function edit($id)
@@ -43,13 +43,19 @@ class PelangganController extends Controller
             'email' => 'required|email|unique:pelanggans,email,' . $id,
             'telepon' => 'required|string|max:15',
         ]));
-        return redirect()->route('pelanggan.index');
+        return redirect()->route('pelanggan.index')->with('success', 'Pelanggan berhasil diupdate.');
     }
 
     public function destroy($id)
-    {
+{
+    try {
         $pelanggan = Pelanggan::findOrFail($id);
-        $pelanggan->delete();
-        return redirect()->route('pelanggan.index');
+        $pelanggan->delete(); // Akan memicu error jika ada constraint yang melarang penghapusan
+
+        return redirect()->route('pelanggan.index')->with('success', 'Pelanggan berhasil dihapus.');
+    } catch (\Exception $e) {
+        return redirect()->route('pelanggan.index')->with('error', 'Tidak dapat menghapus pelanggan yang memiliki pesanan terkait.');
     }
+}
+
 }

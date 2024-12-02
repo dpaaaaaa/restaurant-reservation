@@ -17,10 +17,13 @@ class PembayaranController extends Controller
     }
 
     public function create()
-    {
-        $pesanans = Pesanan::all();
-        return view('pembayaran.create', compact('pesanans'));
-    }
+{
+    // Ambil hanya pesanan yang belum memiliki pembayaran
+    $pesanans = Pesanan::doesntHave('pembayaran')->with('pelanggan')->get();
+
+    return view('pembayaran.create', compact('pesanans'));
+}
+
 
     public function store(Request $request)
     {
@@ -30,8 +33,8 @@ class PembayaranController extends Controller
             'tanggal_bayar' => 'required|date',
             'metode_pembayaran' => 'required|string|max:255',
         ]));
-        
-        return redirect()->route('pembayaran.index');
+
+        return redirect()->route('pembayaran.index')->with('succes', 'pembayaranberhasil ditambah');
     }
 
     public function edit($id)
@@ -44,7 +47,7 @@ class PembayaranController extends Controller
     public function update(Request $request, $id)
     {
         $pembayaran = Pembayaran::findOrFail($id);
-        
+
         $pembayaran->update($request->validate([
             'pesanan_id' => 'required|exists:pesanans,id',
             'total_bayar' => 'required|numeric|min:0',
@@ -52,13 +55,13 @@ class PembayaranController extends Controller
             'metode_pembayaran' => 'required|string|max:255',
         ]));
 
-        return redirect()->route('pembayaran.index');
+        return redirect()->route('pembayaran.index')->with('success', 'Pembayaran berhasil diupdate');
     }
 
     public function destroy($id)
     {
         $pembayaran = Pembayaran::findOrFail($id);
         $pembayaran->delete();
-        return redirect()->route('pembayaran.index');
+        return redirect()->route('pembayaran.index')->with('success', 'Pembayaran berhasil dihapus');
     }
 }

@@ -30,7 +30,7 @@ class KaryawanController extends Controller
 
 
 
-        return redirect()->route('karyaw t64a.index')->with('success', 'Meja added successfully');
+        return redirect()->route('karyawan.index')->with('success', 'Karyawan berhasil ditambah');
 
     }
 
@@ -51,7 +51,7 @@ class KaryawanController extends Controller
             'gaji' => 'required|numeric|min:0',
         ]));
 
-        return redirect()->route('karyawan.index')->with('success', 'Karyawan updated successfully.');
+        return redirect()->route('karyawan.index')->with('success', 'Karyawan berhasil diupdate.');
     }
 
     public function destroy($id)
@@ -59,6 +59,6 @@ class KaryawanController extends Controller
         $karyawan = Karyawan::findOrFail($id);
         $karyawan->delete();
 
-        return redirect()->route('karyawan.index')->with('success', 'Karyawan deleted successfully.');
+        return redirect()->route('karyawan.index')->with('success', 'Karyawan berhasil dihapus.');
     }
 }
