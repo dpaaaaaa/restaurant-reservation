@@ -18,8 +18,7 @@
 
                         <div class="text-center">
                             <h5 class="mb-3">Welcome to the Restaurant Management System!</h5>
-                            <p class="text-muted">
-                                Manage your restaurant effectively using this dashboard. Navigate to the sections below to access the available features.
+                            <p class="text-muted"> Enjoy the menu at our restaurant. Thank you for visiting
                             </p>
                         </div>
 

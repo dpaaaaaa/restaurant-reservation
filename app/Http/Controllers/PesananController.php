@@ -23,7 +23,6 @@ class PesananController extends Controller
     return view('pesanan.index', compact('pesanans'));
 }
 
-
     public function create()
     {
         $pelanggans = Pelanggan::all();
@@ -33,6 +32,7 @@ class PesananController extends Controller
 
     public function store(Request $request)
     {
+        
         $menu = Menu::find($request->menu_id);
         $total_harga = $menu->harga * $request->jumlah;
 
@@ -60,6 +60,7 @@ class PesananController extends Controller
         $menu = Menu::find($request->menu_id);
         $total_harga = $menu->harga * $request->jumlah;
 
+
         $pesanan->update([
             'pelanggan_id' => $request->pelanggan_id,
             'menu_id' => $request->menu_id,
@@ -72,6 +73,7 @@ class PesananController extends Controller
 
     public function destroy($id)
     {
+
         $pesanan = Pesanan::findOrFail($id);
         $pesanan->delete();
         return redirect()->route('pesanan.index')->with('succes', 'Pesanan berhasil dihapus');

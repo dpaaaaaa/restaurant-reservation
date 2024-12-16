@@ -8,6 +8,7 @@ use App\Http\Controllers\MenuController;
 use App\Http\Controllers\MejaController;
 use App\Http\Controllers\ReservasiController;
 use App\Http\Controllers\PelangganController;
+use App\Http\Controllers\EventController;
 use Illuminate\Support\Facades\Auth;
 
 // Route untuk halaman utama
@@ -23,6 +24,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     // Route untuk dashboard/home
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 
     // Routes untuk masing-masing tabel menggunakan metode CRUD
     // Karyawan Routes
@@ -40,6 +42,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('pembayaran/{id}/edit', [PembayaranController::class, 'edit'])->name('pembayaran.edit');
     Route::put('pembayaran/{id}', [PembayaranController::class, 'update'])->name('pembayaran.update');
     Route::delete('pembayaran/{id}', [PembayaranController::class, 'destroy'])->name('pembayaran.destroy');
+
 
     // Pesanan Routes
     Route::get('pesanan', [PesananController::class, 'index'])->name('pesanan.index');

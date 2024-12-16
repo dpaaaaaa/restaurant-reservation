@@ -10,8 +10,8 @@ class MenuController extends Controller
 {
     public function index()
     {
-        $menus = Menu::all();
-        return view('menu.index', compact('menus'));
+        $menus=Menu::orderBy('id', 'asc')->get();
+        return view('menu.index', ['menus'=>$menus]);
     }
 
     public function create()

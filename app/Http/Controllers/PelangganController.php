@@ -10,8 +10,9 @@ class PelangganController extends Controller
 {
     public function index()
     {
-        $pelanggans = Pelanggan::all();
+        $pelanggans = Pelanggan::OrderBy('id', 'desc')->get();
         return view('pelanggan.index', compact('pelanggans'));
+
     }
 
     public function create()
@@ -48,12 +49,12 @@ class PelangganController extends Controller
 
     public function destroy($id)
 {
-    try {
+    try {  //logika yang menimbulkan potensi eror
         $pelanggan = Pelanggan::findOrFail($id);
         $pelanggan->delete(); // Akan memicu error jika ada constraint yang melarang penghapusan
 
         return redirect()->route('pelanggan.index')->with('success', 'Pelanggan berhasil dihapus.');
-    } catch (\Exception $e) {
+    }catch (\Exception $e) {
         return redirect()->route('pelanggan.index')->with('error', 'Tidak dapat menghapus pelanggan yang memiliki pesanan terkait.');
     }
 }

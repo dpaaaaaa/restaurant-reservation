@@ -3,9 +3,9 @@
 @section('content')
     <!-- Begin Page Content -->
     <div class="container-fluid">
-        <h3 class="h3 mb-4 text-white btn bg-secondary">Daftar Meja</h3>
+        <h3 class="h3 mb-4 text-white btn bg-secondary shadow-hologram">Daftar Meja</h3>
         <!-- DataTales Example -->
-        <div class="card shadow mb-4">
+        <div class="card shadow-hologram mb-4">
             <div class="card-header py-3">
                 <a href="{{ route('meja.create') }}" class="btn btn-success btn-icon-split">
                     <span class="icon text-white-50">
@@ -35,18 +35,16 @@
                         </thead>
                         <tbody>
                             @foreach ($mejas as $meja)
-                                <tr>
+                                <tr class="row-hover">
                                     <th scope="row">{{ $loop->iteration }}</th>
                                     <td><strong>{{ $meja->nomor_meja }}</strong></td>
                                     <td><strong>{{ $meja->kapasitas }}</strong></td>
-                                    {{-- <td><strong>{{ $meja->status ? 'Tersedia' : 'Terisi' }}</strong></td> --}}
                                     <td>
                                         <span class="badge {{ $meja->status ? 'badge-success' : 'badge-danger' }}">
                                             {{ $meja->status ? 'Tersedia' : 'Terisi' }}
                                         </span>
                                     </td>
-
-                                    <td>
+                                    <td class="d-flex align-items-center gap-2">
                                         <a href="{{ route('meja.edit', $meja->id) }}"
                                             class="btn btn-outline-success btn-sm">
                                             <img width="16" height="16"
@@ -75,4 +73,76 @@
             </div>
         </div>
     </div>
+    <!-- /.container-fluid -->
 @endsection
+
+<style>
+    body {
+        background: linear-gradient(135deg, rgba(110, 142, 251, 0.8), rgba(98, 182, 183, 0.8));
+        background-size: 400% 400%;
+        animation: gradientAnimation 15s ease infinite;
+    }
+
+    @keyframes gradientAnimation {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+
+    .shadow-hologram {
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1), 0 0 10px rgba(110, 142, 251, 0.5);
+        transition: all 0.3s ease;
+    }
+
+    .shadow-hologram:hover {
+        box-shadow: 0 6px 40px rgba(0, 0, 0, 0.15), 0 0 15px rgba(110, 142, 251, 0.7);
+        transform: scale(1.02);
+    }
+
+    .row-hover {
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .row-hover:hover {
+        background-color: rgba(110, 142, 251, 0.1);
+        box-shadow: inset 0 0 10px rgba(110, 142, 251, 0.3);
+    }
+
+    .btn-outline-success {
+        border: 1px solid #28a745; /* Border hijau */
+        color: #28a745; /* Teks hijau */
+        background-color: transparent; /* Latar belakang transparan */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .btn-outline-success:hover {
+        background-color: #28a745; /* Latar belakang hijau saat hover */
+        color: #fff; /* Teks putih saat hover */
+    }
+
+    .btn-outline-danger {
+        border: 1px solid #dc3545; /* Border merah */
+        color: #dc3545; /* Teks merah */
+        background-color: transparent; /* Latar belakang transparan */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .btn-outline-danger:hover {
+        background-color: #dc3545; /* Latar belakang merah saat hover */
+        color: #fff; /* Teks putih saat hover */
+    }
+
+    .d-flex.align-items-center.gap-2 {
+        gap: 10px; /* Menambahkan jarak antara tombol Edit dan Delete */
+    }
+</style>

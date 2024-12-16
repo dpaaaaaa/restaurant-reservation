@@ -28,6 +28,7 @@ use HasFactory;
 
     public function pembayaran()
 {
+
     return $this->hasOne(Pembayaran::class, 'pesanan_id');
 }
 
